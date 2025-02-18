@@ -358,7 +358,7 @@ console.log(allDocuments)
                                 Abrir Câmera
                             </button>
 
-                            {isMobile && (
+                            {cameraMobile && (
                                 <input
                                     type="file"
                                     accept="image/*"
@@ -370,7 +370,7 @@ console.log(allDocuments)
                             )}
                         </div>
                     ) : !capturedImage ? (
-                        isMobile ? (
+                        cameraMobile ? (
                             <button onClick={openMobileCamera} className={styles.nextButton}>
                                 Tirar Foto
                             </button>
@@ -410,7 +410,7 @@ console.log(allDocuments)
     ref={fileInputRef}
     type="file"
     accept="image/*"
-    capture="environment"
+    capture="user"
     onChange={handleMobileCapture}
     style={{ display: "none" }}
 />
