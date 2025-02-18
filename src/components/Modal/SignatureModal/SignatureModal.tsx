@@ -2,8 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
 import Webcam from 'react-webcam';
 import styles from './SignatureModal.module.css';
-import { FaArrowLeft, FaArrowRight, FaCamera, FaCheckCircle, FaEdit, FaFileContract, FaRegTimesCircle } from 'react-icons/fa';
-import { FcCameraIdentification, FcDocument, FcSelfie, FcServices, FcSmartphoneTablet } from "react-icons/fc";
+import { FaArrowLeft, FaArrowRight,  FaCheckCircle, FaEdit, FaRegTimesCircle } from 'react-icons/fa';
+import { FcSelfie, FcServices, FcSmartphoneTablet } from "react-icons/fc";
 import contratoAssinaturaIlustracao1 from '../../../assets/img/contractSteps/contratoAssinaturaIlustracao.jpg';
 import contratoAssinaturaIlustracao2 from '../../../assets/img/contractSteps/contratoAssinaturaIlustracao2.jpg';
 import contratoAssinaturaIlustracao3 from '../../../assets/img/contractSteps/contratoAssinaturaIlustracao3.png';
@@ -12,12 +12,10 @@ import DocumentViewer from '../DocumentViewer';
 import assinaturaExemplo from '../../../assets/mp4/digitalSignature.mp4';
 import ImageCropper from '../../ImageCropper/ImageCropper';
 import { Player } from '@lottiefiles/react-lottie-player';
-import holdingDocs from '../../../assets/animations/holdingDocumentSelfie.json';
 import loading from '../../../assets/animations/Loadings/LoadingCompleto.json';
 import { sendSignatureAndSelfie } from '../../../services/signatureService';
 import { showToastError, showToastSuccess } from '../../Toastify/Toastify';
 import Confetti from 'react-confetti';
-import { MdGavel } from 'react-icons/md';
 import { useMediaQuery } from '../../useMediaQuery.tsx/useMediaQuery';
 
 // Array de imagens correspondentes a cada etapa
@@ -73,10 +71,11 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
     };
 
     // Função para capturar foto no celular
-    const handleMobileCapture = (event) => {
+    const handleMobileCapture = (event:any) => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
+            //@ts-ignore
             reader.onloadend = () => setCapturedImage(reader.result);
             reader.readAsDataURL(file);
         }
@@ -87,6 +86,7 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
     useEffect(() => {
         // Detecta se o dispositivo é mobile
         setCameraMobile(/Mobi|Android|iPhone/i.test(navigator.userAgent));
+        console.log(cameraMobile)
     }, []);
 
 

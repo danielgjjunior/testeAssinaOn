@@ -16,8 +16,6 @@ import { KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
 import styles from "./DocumentsTable.module.css";
 import { useLoading } from "../Loading/LoadingContext";
 import { fetchDocuments } from "../../services/documentsService";
-import DocumentViewer from "../Modal/DocumentViewer";
-import SignatureModal from "../Modal/SignatureModal/SignatureModal";
 
 interface DocumentType {
   "NÚMERO DOCUMENTO": string;
@@ -93,8 +91,8 @@ const Row = ({ doc, handleVisualizarClick, handleAssinarClick, handlePrint }: an
 const TableContent = ({ codcontrato, address }: { codcontrato: string | null; address: string | null }) => {
   const [documents, setDocuments] = useState<DocumentType[]>([]);
   const [selectedDoc, setSelectedDoc] = useState<DocumentType | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isSignatureModalOpen, setIsSignatureModalOpen] = useState(false);
+  //const [isModalOpen, setIsModalOpen] = useState(false);
+ // const [isSignatureModalOpen, setIsSignatureModalOpen] = useState(false);
   const { setIsLoading } = useLoading();
 
   const fetchData = async () => {
@@ -127,6 +125,7 @@ const TableContent = ({ codcontrato, address }: { codcontrato: string | null; ad
 
   useEffect(() => {
     fetchData();
+    console.log(selectedDoc)
   }, [codcontrato, setIsLoading]);
 
   return (
