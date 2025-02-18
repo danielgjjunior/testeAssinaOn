@@ -363,7 +363,7 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
                                     <input
                                         type="file"
                                         accept="image/*"
-                                        capture="environment"
+                                        capture="user"
                                         onChange={handleMobileCapture}
                                         style={{ display: "none" }}
                                         id="mobileCamera"
