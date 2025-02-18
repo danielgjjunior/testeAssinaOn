@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import SignatureCanvas from 'react-signature-canvas';
+import Webcam from 'react-webcam';
 import styles from './SignatureModal.module.css';
 import { FaArrowLeft, FaArrowRight, FaCheckCircle, FaEdit, FaRegTimesCircle } from 'react-icons/fa';
 import { FcSelfie, FcServices, FcSmartphoneTablet } from "react-icons/fc";
@@ -53,57 +54,40 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
     const [isFeedbackModalVisible, setIsFeedbackModalVisible] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [showConfetti, setShowConfetti] = useState(false);
-    const [ipaddress, setIpAddress] = useState(''); useEffect(() => { const fetchIp = async () => { try { const response = await fetch('https://api.ipify.org?format=json'); const data = await response.json(); setIpAddress(data.ip); } catch (error) { console.error(error); } }; fetchIp(); }, []);    
+    const [ipaddress, setIpAddress] = useState(''); useEffect(() => { const fetchIp = async () => { try { const response = await fetch('https://api.ipify.org?format=json'); const data = await response.json(); setIpAddress(data.ip); } catch (error) { console.error(error); } }; fetchIp(); }, []);
+
+    const webcamRef = useRef<Webcam | null>(null);
     const isMobile = useMediaQuery('(max-width: 768px)');
     const [cameraMobile, setCameraMobile] = useState(false)
-    const [videoStream, setVideoStream] = useState<MediaStream | null>(null);
-    const videoRef = useRef<HTMLVideoElement | null>(null);
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
 
-    useEffect(() => {
-        // Limpeza do stream de vídeo quando a câmera for fechada
-        return () => {
-            if (videoStream) {
-                const tracks = videoStream.getTracks();
-                tracks.forEach(track => track.stop());
-            }
-        };
-    }, [videoStream]);
-
-    const openMobileCamera = async () => {
-        try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-                video: { facingMode: 'user' }, // Força a câmera frontal
-            });
-            setVideoStream(stream);
-            if (videoRef.current) {
-                videoRef.current.srcObject = stream;
-            }
-            setIsCameraOpen(true);
-        } catch (err) {
-            console.error('Erro ao acessar a câmera: ', err);
-        }
-    };
-    
     const capturePhoto = () => {
-        if (videoRef.current) {
-            const canvas = document.createElement('canvas');
-            const context = canvas.getContext('2d');
-            if (context) {
-                canvas.width = videoRef.current.videoWidth;
-                canvas.height = videoRef.current.videoHeight;
-                context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
-                setCapturedImage(canvas.toDataURL('image/jpeg'));
+        if (webcamRef.current) {
+            const imageData = webcamRef.current.getScreenshot();
+            if (imageData) {
+                setCapturedImage(imageData);
+                setIsCameraOpen(false);
             }
         }
     };
-    
-    const closeCamera = () => {
-        if (videoStream) {
-            const tracks = videoStream.getTracks();
-            tracks.forEach(track => track.stop());
+
+    // Função para capturar foto no celular
+    const handleMobileCapture = (event: any) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => setCapturedImage(reader.result as string);
+            reader.readAsDataURL(file);
         }
-        setIsCameraOpen(false);
     };
+
+    // Função para forçar clique no input de arquivo escondido
+    const openMobileCamera = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
+        }
+    };
+
 
 
     useEffect(() => {
@@ -363,59 +347,85 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
                 )}
 
                 {step === 4 && (
-                    
-    <div className={styles.stepContent4}>
-    {!isCameraOpen ? (
-        <div className={styles.stepContent4}>
-            <p>
-                Para concluir sua assinatura de contrato, será necessário capturar uma foto sua.
-                Segure seu documento com o lado da frente (Lado da foto) virado para a câmera.
-                Quando estiver pronto, capture a imagem.
-            </p>
+                    <div className={styles.stepContent4}>
+                        {!isCameraOpen ? (
+                            <div className={styles.stepContent4}>
+                                <p>Para concluir sua assinatura de contrato, será necessário capturar uma foto sua. Segure seu documento com o lado da frente (Lado da foto) virado para a câmera. Quando estiver pronto, capture a imagem.</p>
 
-            <button onClick={openMobileCamera} className={styles.nextButton}>
-                Abrir Câmera
-            </button>
-        </div>
-    ) : !capturedImage ? (
-        <div className={styles.cameraModal}>
-            <video ref={videoRef} autoPlay width="100%" height="auto" />
-            <div className={styles.cameraButtons}>
-                <button onClick={capturePhoto} className={styles.captureButton}>
-                    Capturar Foto
-                </button>
-                <button onClick={closeCamera} className={styles.cancelButton}>
-                    Fechar Câmera
-                </button>
-            </div>
-        </div>
-    ) : (
-        <>
-            <img
-                src={capturedImage}
-                alt="Imagem Capturada"
-                className={styles.previewImage}
-            />
-            <div className={styles.buttonContainer}>
-                <button onClick={() => setCapturedImage(null)} className={styles.editButton}>
-                    Capturar Nova Imagem
-                </button>
-            </div>
-        </>
-    )}
-    <div className={styles.buttonContainer}>
-        <button className={styles.backButton} onClick={handlePreviousStep}>
-            <FaArrowLeft /> Voltar
-        </button>
-        <button
-            className={!capturedImage ? styles.buttonDisabled : styles.saveButton}
-            onClick={handleCompleteSigning}
-            disabled={step < 4 || !capturedImage}
-        >
-            Concluir Assinatura <FaCheckCircle />
-        </button>
-    </div>
-</div>
+                                <button
+                                    onClick={() => setIsCameraOpen(true)}
+                                    className={styles.nextButton}
+                                >
+                                    Abrir Câmera
+                                </button>
+
+                                {cameraMobile && (
+                                    <input
+                                        type="file"
+                                        accept="image/*"
+                                        capture="environment"
+                                        onChange={handleMobileCapture}
+                                        style={{ display: "none" }}
+                                        id="mobileCamera"
+                                    />
+                                )}
+                            </div>
+                        ) : !capturedImage ? (
+                            cameraMobile ? (
+                                <button onClick={openMobileCamera} className={styles.nextButton}>
+                                    Tirar Foto
+                                </button>
+                            ) : (
+                                <div className={styles.cameraModal}>
+                                    <Webcam
+                                        audio={false}
+                                        ref={webcamRef}
+                                        screenshotFormat="image/jpeg"
+                                        className={styles.cameraPreview}
+                                    />
+                                    <div className={styles.cameraButtons}>
+                                        <button onClick={capturePhoto} className={styles.captureButton}>
+                                            Capturar Foto
+                                        </button>
+                                        <button onClick={() => setIsCameraOpen(false)} className={styles.cancelButton}>
+                                            Fechar Câmera
+                                        </button>
+                                    </div>
+                                </div>
+                            )
+                        ) : (
+                            <>
+                                <img
+                                    src={capturedImage}
+                                    alt="Imagem Capturada"
+                                    className={styles.previewImage}
+                                />
+                                <div className={styles.buttonContainer}>
+                                    <button onClick={() => setCapturedImage(null)} className={styles.editButton}>
+                                        Capturar Nova Imagem
+                                    </button>
+                                </div>
+                            </>
+                        )}
+                        <input
+                            ref={fileInputRef}
+                            type="file"
+                            accept="image/*"
+                            capture="user"
+                            onChange={handleMobileCapture}
+                            style={{ display: "none" }}
+                        />
+                        <div className={styles.buttonContainer}>
+                            <button className={styles.backButton} onClick={handlePreviousStep}> <FaArrowLeft /> Voltar </button>
+                            <button
+                                className={!capturedImage ? styles.buttonDisabled : styles.saveButton}
+                                onClick={handleCompleteSigning}
+                                disabled={step < 4 || !capturedImage}
+                            >
+                                Concluir Assinatura <FaCheckCircle />
+                            </button>
+                        </div>
+                    </div>
                 )}
             </div>
 
