@@ -59,6 +59,7 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
     const webcamRef = useRef<Webcam | null>(null);
     const isMobile = useMediaQuery('(max-width: 768px)');
     const [cameraMobile,setCameraMobile] = useState(false)
+    const fileInputRef = useRef<HTMLInputElement | null>(null);
 
     const capturePhoto = () => {
         if (webcamRef.current) {
@@ -71,13 +72,19 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
     };
 
     // Função para capturar foto no celular
-    const handleMobileCapture = (event:any) => {
+    const handleMobileCapture = (event: any) => {
         const file = event.target.files[0];
         if (file) {
             const reader = new FileReader();
-            //@ts-ignore
-            reader.onloadend = () => setCapturedImage(reader.result);
+            reader.onloadend = () => setCapturedImage(reader.result as string);
             reader.readAsDataURL(file);
+        }
+    };
+    
+    // Função para forçar clique no input de arquivo escondido
+    const openMobileCamera = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click();
         }
     };
 
@@ -364,9 +371,9 @@ console.log(allDocuments)
                         </div>
                     ) : !capturedImage ? (
                         isMobile ? (
-                            <label htmlFor="mobileCamera" className={styles.captureButton}>
+                            <button onClick={openMobileCamera} className={styles.nextButton}>
                                 Tirar Foto
-                            </label>
+                            </button>
                         ) : (
                             <div className={styles.cameraModal}>
                                 <Webcam
@@ -399,7 +406,14 @@ console.log(allDocuments)
                             </div>
                         </>
                     )}
-                    
+                    <input
+    ref={fileInputRef}
+    type="file"
+    accept="image/*"
+    capture="environment"
+    onChange={handleMobileCapture}
+    style={{ display: "none" }}
+/>
                     <div className={styles.buttonContainer}>
                         <button className={styles.backButton} onClick={handlePreviousStep}> <FaArrowLeft /> Voltar </button>
                         <button
