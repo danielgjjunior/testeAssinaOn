@@ -1,0 +1,37 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+  margin-top: 0;
+  margin: 0;
+  padding: 0;
+  
+}
+
+ul {
+  list-style: none;
+
+}
+
+a {
+  text-decoration: none;
+}
+
+:root {
+  --primary-color: #09102A;
+  --secondary-color: hsl(220, 24%, 12%);
+  --terc-color: linear-gradient(105deg, #12b9f7 12.57%, #3f71f8 71.15%);
+  --terc-color-hover: linear-gradient(105deg, #0096cc 12.57%, #0e4aee 71.15%);
+  --yellow-color: linear-gradient(105deg, #ffe279 12.57%, #fdd239 71.15%);
+  --dark-color: #1E2833;
+
+  --primary-producer-color: #e96f3f;
+  --primary-producer-color-hover: #ff4800;
+  --gray-producer-color: #646464;
+  --gray-producer-color-hover: #252525;
+
+  --terc-producer-color: linear-gradient(105deg, #ee8743 12.57%, #f06305 71.15%);
+
+  --createEvent-color:
+
+
+}

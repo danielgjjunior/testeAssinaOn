@@ -1,0 +1,228 @@
+.CardContainer {
+    border-radius: 14px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.04);
+    width: 300px;
+    height: 400px;
+    background-color: white;
+}
+
+.upperDiv {
+    height: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contractPreview {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 5px;
+    width: 105px;
+    height: 105px;
+    flex-shrink: 0;
+    border-radius: 26px;
+    background-size: cover;
+    background-position: 50%;
+}
+
+.contractName {
+    width: 90%;
+    margin-top: 8px;
+    color: #202020;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    word-break: break-all;
+    text-overflow: ellipsis;
+    overflow-wrap: break-word;
+}
+
+.infoDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contractNumber {
+    color: #A5A5A5;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px
+}
+
+.acceptanceDate {
+    color: #01B3FF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.IconContainer {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background-color: rgb(255, 255, 255); /* Utiliza a classe .bg-white equivalente */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); /* .shadow-lg */
+    border-radius: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.documentDate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+
+.documentData {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.statusDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 75%;
+    top: -5%;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background-color: #888888;
+    color: #FFF;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.extraInfoContainer {
+    margin: 10px 10px 10px 10px;
+    display: flex;
+    align-items: baseline;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.infoContainerTitle {
+    color: #01B3FF;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.infoContainerContent {
+    color: #000000;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.statusPendente {
+    background-color: #DC3472;
+}
+
+.statusAceito {
+    background-color: #35C691;
+}
+
+.statusDefault {
+    background-color: gray;
+    /* Caso não haja um status conhecido */
+}
+
+.actions{
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.assineButton {
+    background-color: #01b3ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.assineButton:hover {
+    background-color: #0286c4;
+}
+
+.visualizarButton {
+    background-color: #f1f1f1;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.visualizarButton:hover {
+    background-color: #e1e1e1;
+}
+
+.printIcon {
+    position: relative;
+    top: 10px;
+    right: -130px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #01B3FF;
+    transition: transform 0.2s ease, color 0.3s ease;
+}
+
+.printIcon:hover {
+    transform: scale(1.1);
+    color: #007bbd;
+}
+
+.tableCell {
+    max-width: 200px; /* Ajuste conforme necessário */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .contractName {
+    white-space: normal;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    width: 90%; /* Ajuste conforme necessário */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  }
+
+  

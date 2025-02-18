@@ -1,0 +1,71 @@
+.CardContentMain {
+  display: flex;
+  flex-direction:column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  gap: 10px;
+  flex-grow: 1;
+  justify-content: center;
+  background-color: #F9F9F9;
+}
+ 
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 5px;
+}
+
+.documentsSection {
+  background: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.noDocuments {
+  text-align: center;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 700;
+  padding: 20px;
+  border-radius: 8px;
+  background: #5ECFFF;
+  border: 1px solid #5ECFFF;
+}
+
+.whatsappButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #25d366;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-top: 10px;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  transition: background 0.3s;
+}
+
+.whatsappButton:hover {
+  background: #1ebe57;
+}
+
+.whatsappButton svg {
+  margin-right: 8px;
+}

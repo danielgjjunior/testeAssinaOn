@@ -1,0 +1,203 @@
+/* 404Page.module.css */
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap");
+
+:root {
+    --first-color: #0C134F;
+    --second-color: #1D267D;
+    --third-color: #5C469C;
+    --fourth-color: #D4ADFC;
+
+    --body-font: 'Space Grotesk', sans-serif;
+    --biggest-font-size: 5rem;
+    --normal-font-size: 1.2rem;
+    --smaller-font-size: 1rem;
+}
+
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    margin: 0 auto;
+    background-color: var(--second-color);
+    color: var(--fourth-color);
+    font-size: var(--normal-font-size);
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.home {
+    padding-top: 5rem;
+}
+
+.homeContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.homeData {
+    text-align: left;
+    width: 60%;
+}
+
+.homeTitle {
+    font-size: var(--biggest-font-size);
+    font-weight: 700;
+    margin: 0.75rem 0;
+}
+
+.homeButton {
+    margin-top: 2rem;
+    display: inline-block;
+    background-color: var(--first-color);
+    color: var(--fourth-color);
+    padding: .80rem 1.5rem;
+    border-radius: 3rem;
+    transition: .4s;
+}
+
+.homeButton:hover {
+    box-shadow: 0 4px 12px rgba(34, 24, 6, 0.2);
+}
+
+.homeImg {
+    justify-self: center;
+    width: 40%;
+}
+
+.homeImg img {
+    width: 300px;
+    animation: floaty 1.8s infinite alternate;
+}
+
+.homeShadow {
+    width: 60%;
+    margin-left: 6%;
+    height: 24px;
+    background-color: rgba(212, 173, 252, 0.161);
+    border-radius: 50%;
+    filter: blur(7px);
+    animation: shadow 1.8s infinite alternate;
+}
+
+/* Animação do fantasma */
+
+@keyframes floaty {
+    0% {
+        transform: translateY(0);
+    }
+
+    100% {
+        transform: translateY(15px);
+    }
+}
+
+@keyframes shadow {
+    0% {
+        transform: scale(0.85, 0.85);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+/* ====== Estilização do footer ====== */
+
+footer {
+    height: 10vh;
+    text-align: center;
+}
+
+footer p {
+    font-size: var(--smaller-font-size);
+    font-weight: 500;
+    line-height: 10vh;
+}
+
+footer a {
+    color: var(--first-color);
+    font-weight: 700;
+}
+
+@media screen and (max-width: 1024px) {
+    .main {
+        padding: 0 2.5rem;
+    }
+
+    .homeData {
+        width: 50%;
+    }
+
+    .homeImg {
+        width: 40%;
+    }
+
+    .homeImg img {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 730px) {
+    :root {
+        --biggest-font-size: 3.5rem;
+        --normal-font-size: 1.1rem;
+        --smaller-font-size: 0.9rem;
+    }
+
+    .home {
+        padding-top: 3rem;
+    }
+
+    .homeContainer {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .homeData {
+        width: 100%;
+        text-align: center;
+    }
+
+    .homeData p {
+        text-align: left;
+    }
+
+    .homeTitle {
+        margin: 2rem 0;
+    }
+
+    .homeButton {
+        width: 80%;
+        text-align: center;
+        margin: 2rem 0;
+    }
+
+    .homeImg {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    .homeImg img {
+        width: 200px;
+    }
+
+    .homeShadow {
+        width: 50%;
+        margin-left: 25%;
+    }
+}
+
+@media screen and (max-height: 700px) and (max-width: 500px) {
+    .main {
+        height: auto;
+    }
+
+    footer {
+        height: auto;
+    }
+
+    footer p {
+        margin: 2rem 0;
+    }
+}

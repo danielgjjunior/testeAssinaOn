@@ -1,0 +1,67 @@
+.ShortcutCard {
+    background:
+        url('../../assets/svg/shortcut.svg') center/cover no-repeat,
+        /* Imagem SVG */
+        linear-gradient(139deg, #1CBBFF 23.19%, #4FF3FE 104.35%);
+    /* Gradiente */
+    border-radius: 32px;
+    width: 245px;
+    height: 203px;
+    cursor: pointer;
+}
+
+.collapsedShortcut{
+    width: 60px;
+    height: 60px;
+    background:
+        url('../../assets/svg/shortcut.svg') center/cover no-repeat,
+        /* Imagem SVG */
+        linear-gradient(139deg, #1CBBFF 23.19%, #4FF3FE 104.35%);
+        padding: 2%;
+        border-radius: 15px;
+        cursor: pointer;
+}
+
+.collapsedShortcut:hover{
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-5%) scale(1); /* Leve aumento no hover */
+}
+
+.ShortcutCard:hover{
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-5%) scale(1); /* Leve aumento no hover */
+}
+
+.dotsSquare {
+    position: relative;
+    top: 30px;
+    left: 20px;
+    z-index: 11;
+}
+
+.text {
+    position: relative;
+    top: 40px;
+    left: 20px;
+    width: 200px;
+    color: white;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+
+}
+
+.arrow{
+    position: relative;
+    top: 60px;
+    left: 20px;
+    color: white;
+}
+
+.appclientes{
+    position: relative;
+    margin: 25% 25% ;
+    width: 30px;
+}
+

@@ -1,0 +1,722 @@
+/* SignatureModal.module.css */
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+.stepContent {
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 5%;
+    overflow: auto;
+    overflow-y: auto;
+
+}
+
+.modalContent {
+    background: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 800px;
+    display: flex;
+    height: 750px;
+    max-height: 750px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+    overflow: auto;
+}
+
+.stepContent4 {
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+}
+
+.modalContent4 {
+    background: #ffffff;
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 800px;
+    height: 750px;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+    padding: 2rem;
+    display: flex;
+    overflow: auto;
+    width: 90%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.docsList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 200px;
+    overflow: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+
+}
+
+.modalTitle {
+    text-align: center;
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+.ilustrator {
+    width: 100%;
+    height: 30%;
+    background-size: cover;
+    background-position: 20%;
+    margin-bottom: 10px;
+}
+
+.docName {
+    display: inline-flex;
+    padding: 12px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    background-color: #F3F3F3;
+    border-radius: 12px;
+
+    color: #696A6F;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+}
+
+.docName:hover {
+    background-color: #747474;
+    cursor: pointer;
+    color: white;
+}
+
+
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+    background: #f9fafb;
+    border-radius: 12px 12px 0 0;
+    padding: 1rem;
+
+}
+
+.modalHeader h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+
+.backButton:hover {
+    transform: scale(1.1);
+    color: #007BFF;
+}
+
+.nextButton,
+.completeButton {
+    display: flex;
+    width: 140px;
+    padding: 11px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    color: #ffffff;
+    border: 1px solid #01b3ff;
+    background: #01b3ff;
+    border-radius: 2%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.nextButton:hover,
+.completeButton:hover {
+    transform: scale(1.1);
+}
+
+.completeButton {
+    background: linear-gradient(135deg, #28a745, #218838);
+}
+
+.closeButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    position: relative;
+    top: 4%;
+    width: fit-content;
+    right: -86%;
+    cursor: pointer;
+    background: #ffffff;
+    color: rgb(240, 43, 43);
+    padding: 1% 2%;
+    border: none;
+    border-radius: 4px;
+
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+.closeButton:hover {
+    background: #E63939;
+    color: white;
+}
+
+.checkboxLabel {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: #555;
+}
+
+.cancelButton {
+    display: flex;
+    width: 140px;
+    padding: 11px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    color: #ff0000;
+    border: 1px solid #ff0101;
+    background: #FFF;
+    border-radius: 2%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.title {
+    color: #333;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.subtitle {
+    width: 80%;
+    text-align: justify;
+    font-size: 16px;
+    font-style: normal;
+    line-height: normal;
+}
+
+.backButton {
+    display: flex;
+    width: 140px;
+    padding: 11px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    color: #01b3ff;
+    border: 1px solid #01b3ff;
+    background: #FFF;
+    border-radius: 2%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.buttonDisabled {
+    background-color: #f1f1f1;
+    border: none;
+    color: rgb(163, 163, 163);
+
+    display: flex;
+    width: 140px;
+    padding: 11px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    border: none;
+}
+
+
+
+
+.cancelButton:hover {
+    background: linear-gradient(135deg, #ff0101, #f53b3b);
+    color: white;
+    transform: scale(1.1);
+
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.signatureCanvas {
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    margin: 1rem 0;
+    padding: 10px;
+    background: #f9f9f9;
+}
+
+input[type="file"] {
+    margin-top: 1rem;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 8px;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.assinaturaVideo {
+    width: 300px;
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+
+
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.header {
+    display: flex;
+    padding: 0%;
+    display: flex;
+    align-items: center;
+
+}
+
+.header .modalTitle {
+    color: #333;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.backDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 0%;
+
+    position: relative;
+}
+
+
+
+.buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.signaturePanel {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f9f9f9;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-width: 900px;
+    max-height: 350px;
+}
+
+.signatureCanvasContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 300px;
+    background: #ffffff;
+    border: 2px dashed #3f51b5;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.signatureControls {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.clearButton,
+.saveButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.clearButton {
+    background: #f44336;
+    color: #fff;
+}
+
+.clearButton:hover {
+    background: #d32f2f;
+}
+
+.saveButton {
+    background: #4caf50;
+    color: #fff;
+}
+
+.saveButton:hover {
+    background: #388e3c;
+}
+
+.upperInfo{
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Mobile Specific Adjustments */
+@media (max-width: 768px) {
+    .signaturePanel {
+        width: 95%;
+        max-width: none;
+        max-height: 80%;
+        flex-direction: column;
+        height: auto;
+    }
+
+    .signatureCanvasContainer {
+        height: 400px;
+        width: 100%;
+    }
+}
+
+.editButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0ad4e;
+    /* Cor laranja suave */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.editButton:hover {
+    background-color: #ec971f;
+    /* Cor laranja mais intensa */
+    transform: scale(1.05);
+    /* Aumenta ligeiramente o botão */
+}
+
+.editButton:active {
+    background-color: #d58512;
+    /* Cor laranja mais escura */
+    transform: scale(1);
+    /* Remove o aumento ao clicar */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.editButton svg {
+    margin-right: 0.5rem;
+    /* Espaçamento entre o ícone e o texto */
+    font-size: 1.2rem;
+}
+
+.cameraPreview {
+    width: 100%;
+    height: max-content;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.signaturePadButton{
+    display: flex;
+    width: 200px;
+    padding: 11px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 18px;
+    color: #ffffff;
+    border: 1px solid #01b3ff;
+    background: #01b3ff;
+    border-radius: 2%;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.previewImage {
+    min-width: 100%;
+    height: 80%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+.captureButton {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.captureButton:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+/* Adicione esses estilos no seu arquivo SignatureModal.module.css */
+
+/* Contêiner para o modal da câmera */
+.cameraModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    height: 50%;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    /* Garante que o modal fique acima de outros elementos */
+}
+
+/* Estilos para a webcam */
+
+
+/* Estilos dos botões abaixo da imagem */
+.cameraButtons {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width: 100%;
+}
+
+
+.feedbackModal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.feedbackContent p {
+    margin: 16px 0;
+}
+
+.loadingSpinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ccc;
+    border-top-color: #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.successIcon {
+    color: green;
+    font-size: 40px;
+}
+
+.errorIcon {
+    color: red;
+    font-size: 40px;
+}
+
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.termsCheckbox {
+    display: flex;
+
+    align-items: center;
+    font-size: 16px;
+    color: #333;
+}
+
+/* Estilo do checkbox */
+.customCheckbox {
+    display: none;
+}
+
+/* Estilo do label como switch */
+.customLabel {
+    display: flex;
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 22px;
+    color: #555;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+/* O círculo */
+.customLabel:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 16px;
+    background-color: #ccc;
+    border-radius: 16px;
+    transition: background-color 0.3s ease;
+}
+
+/* O círculo interno */
+.customLabel:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+/* Quando o checkbox está marcado */
+.customCheckbox:checked+.customLabel:before {
+    background-color: #01b3ff;
+}
+
+.customCheckbox:checked+.customLabel:after {
+    transform: translateX(14px);
+}
+
+.customCheckbox:checked+.customLabel {
+    color: #01b3ff;
+}
