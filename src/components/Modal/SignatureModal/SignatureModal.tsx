@@ -94,6 +94,7 @@ const SignatureModal = ({ onClose, contratoNumero, allDocuments }: SignatureModa
         // Detecta se o dispositivo é mobile
         setCameraMobile(/Mobi|Android|iPhone/i.test(navigator.userAgent));
         console.log(cameraMobile)
+        console.log(isMobile)
     }, []);
 
 
